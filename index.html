@@ -1,0 +1,115 @@
+<head>
+  <meta charset="utf-8">
+
+  <title>The HTML5 Herald</title>
+  <meta name="description" content="The HTML5 Herald">
+  <meta name="author" content="SitePoint">
+  <!-- Latest compiled and minified CSS -->
+  <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css">
+  <!-- Latest compiled and minified JavaScript -->
+  <link rel="stylesheet" type="text/css" href="main.css">
+  <script src="//code.jquery.com/jquery-1.11.0.min.js"></script>
+  <script src="//netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js"></script>
+  <script type="text/javascript" src="//ajax.googleapis.com/ajax/libs/angularjs/1.0.7/angular.min.js"></script>
+  <script src="finance.js"></script>
+</head>
+
+<body ng-app>
+<div class="page-header">
+  <h3>Buy or Renting</h3>
+</div>
+<div ng-controller="MainCtrl">
+	<div class='row'>
+		<div class='col-md-2'>
+			<button type="button" class="btn btn-primary btn-group-lg" ng-click="calculate()">Calculate</button>		
+		</div>
+		<div class='col-md-5'>
+			<div class='well well-sm'>
+			<h4>Monthly Expense 房屋月開銷: {{monthlyBill|currency}}</h4>
+			</div>
+		</div>
+		<div class='col-md-5'>
+		<div class="list-group">
+			<a href="#" class="list-group-item"><div class="alert-danger">Renting: 租房{{durationYear}}年, 我們將損失(lose) <b>{{totalLossFromRent|currency}}</b></div></a>
+	  		<a href="#" class="list-group-item"><div ng-show="gain" class='alert-success'>Buy: 購房{{durationYear}}年, 我們將獲得(gain) <b>{{netOutcome|currency}}</b></div>
+	  		<div ng-show="!gain" class="alert-danger">Buy: 購房{{durationYear}}年, 我們將損失(lose) <b>{{netOutcome|currency}}</b></div></a>
+	  	</div>
+		</div>
+
+	</div>
+	<div class='row'>
+	<div id="renting" class='col-md-6'>
+	  <div class="panel panel-default">
+		  <div class="panel-heading">
+		    <h3 class="panel-title">How long will we stay? </h3>
+		  </div>
+		  <div class="panel-body">
+			<div class="input-group">
+	  			<label>Years to Reside 居住年數</label>
+	  			<input type="text" class="form-control" placeholder="years to reside" ng-model="durationYear">
+			</div>
+			<div class="input-group">
+		  	  <label>annual house appreciation 房子年升值百分比</label>
+			  <input type="text" class="form-control" placeholder="annual house appreciation" ng-model="annualHouseAppreciateRate">
+			</div>
+		</div>
+		</div>
+		<div class="panel panel-default">
+		  <div class="panel-heading">
+		    <h3 class="panel-title">Renting</h3>
+		  </div>
+		  <div class="panel-body">
+		<div class="input-group">
+	  	  <label>Monthly Rent Cost 月租費</label>
+		  <input type="text" class="form-control" placeholder="monthly rent" ng-model="monthlyRent">
+		</div> 
+	    <div class="input-group">
+	  	  <label>Annual Increase 年調長百分比</label>
+		  <input type="text" class="form-control" placeholder="annual increase" ng-model="annualIncrease">
+		</div>
+		</div>
+		</div>
+	</div>
+	<div id="buying" class='col-md-6'>
+		<div class="panel panel-default">
+		  <div class="panel-heading">
+		    <h3 class="panel-title">Buying</h3>
+		  </div>
+		  <div class="panel-body">
+				<div class="input-group">
+			  	  <label>Total House Price 房屋購買價</label>
+				  <input type="text" class="form-control" placeholder="total House Price" ng-model="totalHousePrice">
+				</div> 
+				<div class="input-group">
+			  	  <label>Family invested 家人投資數目</label>
+				  <input type="text" class="form-control" placeholder="Family invested" ng-model="familyInvested">
+				</div>
+				<div class="input-group">
+			  	  <label>Hoa Fee 月管理費</label>
+				  <input type="text" class="form-control" placeholder="HOA Fee" ng-model="HoaFee">
+				</div>
+				<div class="input-group">
+			  	  <label>Hoa Fee annual increase 年管理費調升百分比</label>
+				  <input type="text" class="form-control" placeholder="Hoa Fee annual increase" ng-model="HoaAnnualIncrease">
+				</div>
+				<div class="input-group">
+			  	  <label>mortgage years 貸款年數</label>
+				  <input type="text" class="form-control" placeholder="mortgage years" ng-model="years">
+				</div>
+				<div class="input-group">
+			  	  <label>mortgage interest rate 貸款利息</label>
+				  <input type="text" class="form-control" placeholder="mortgage interest rate" ng-model="interestRate">
+				</div>
+				<div class="input-group">
+			  	  <label>property Tax Rate 地稅百分比</label>
+				  <input type="text" class="form-control" placeholder="property Tax Rate" ng-model="propertyTaxRate">
+				</div>
+			</div>
+		</div>			
+	</div>
+	</div>	
+</div>
+  
+  <script src="mainCtrl.js"></script>
+</body>
+</html>
